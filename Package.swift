@@ -5,14 +5,17 @@ let package = Package(
     name: "RealmBinaryPackage",
     products: [
         .library(
-            name: "Realm",
-            targets: ["Realm"]),
-        .library(
-            name: "RealmSwift",
-            targets: ["Realm", "RealmSwift"])
+            name: "BinaryRealm",
+            targets: ["BinaryRealmTarget"])
     ],
     dependencies: [],
     targets: [
+        .target(
+            name: "BinaryRealmTarget",
+            dependencies: [
+                .target(name: "Realm"),
+                .target(name: "RealmSwift")
+            ],
         .binaryTarget(
             name: "Realm",
             url: "https://github.com/lisb/realm-swift/releases/download/binary_20.0.3/Realm.xcframework.zip",
